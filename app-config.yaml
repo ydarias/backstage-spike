@@ -118,4 +118,4 @@ permission:
   enabled: true
 
 techRadar:
-  url: https://github.com/backstage/community-plugins/blob/main/workspaces/tech-radar/plugins/tech-radar-common/src/sampleTechRadarResponse.json
+  url: https://github.com/ydarias/backstage-spike/blob/main/public/static/techRadarData.json

@@ -28,6 +28,27 @@
     {
       "timeline": [
         {
+          "moved": 0,
+          "ringId": "adopt",
+          "date": "2020-08-06T00:00:00.000Z",
+          "description": "Something in the timeline first entry"
+        }
+      ],
+      "key": "java",
+      "id": "java",
+      "title": "Java",
+      "quadrant": "languages",
+      "links": [
+        {
+          "url": "https://www.java.com/",
+          "title": "Learn more"
+        }
+      ],
+      "description": "Good old Java ^_^"
+    },
+    {
+      "timeline": [
+        {
           "moved": -1,
           "ringId": "adopt",
           "date": "2020-08-06T00:00:00.000Z",
