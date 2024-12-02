@@ -16,6 +16,7 @@
     "build-image": "docker build ../.. -f Dockerfile --tag backstage"
   },
   "dependencies": {
+    "@backstage-community/plugin-tech-radar-backend": "^1.0.0",
     "@backstage/backend-defaults": "^0.5.1",
     "@backstage/config": "^1.2.0",
     "@backstage/plugin-app-backend": "^0.3.76",
