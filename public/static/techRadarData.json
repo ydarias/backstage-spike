@@ -174,6 +174,31 @@
       "id": "github-actions",
       "title": "GitHub Actions",
       "quadrant": "infrastructure"
+    },
+    {
+      "timeline": [
+        {
+          "ringId": "adopt",
+          "date": "2020-08-06T00:00:00.000Z",
+          "description": "long description"
+        },
+        {
+          "ringId": "trial",
+          "date": "2020-07-05T00:00:00.000Z",
+          "description": "long description"
+        }
+      ],
+      "links": [
+        {
+          "url": "https://github.com",
+          "title": "Learn more"
+        }
+      ],
+      "key": "k8s",
+      "id": "k8s",
+      "title": "Kubernetes",
+      "quadrant": "infrastructure",
+      "description": "Most common deployment solution"
     }
   ],
   "quadrants": [
