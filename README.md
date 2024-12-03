@@ -21,6 +21,38 @@ First, we need to install two plugins to make it work.
 yarn --cwd packages/app add @backstage-community/plugin-tech-radar
 ```
 
+Add the route to the `packages/app/src/App.tsx` file:
+
+```typescript jsx
+const routes = (
+  <FloatRoutes>
+    ...
+    <Route
+      path="/tech-radar"
+      element={<TechRadarPage width={1500} height={800} />}
+    />
+  </FloatRoutes>
+)
+```
+
+Also, you need to anchor a link to the sidebar, so change the `packages/app/src/components/Root/Root.tsx` file as:
+
+```typescript jsx
+export const Root = ({ children }: PropsWithChildren<{}>) => (
+  <SidebarPage>
+    <Sidebar>
+      ...
+      <SidebarGroup label="Menu" icon={<MenuIcon />}>
+        ...
+        <SidebarItem icon={HubIcon} to="tech-radar" text="Tech Radar" />
+      </SidebarGroup>
+    </Sidebar>
+  </SidebarPage>
+);
+```
+
+Now we want to be able to have our own data definition for the Technology Radar, so we will use a tech-radar-backend plugin for that.
+
 ```shell
 yarn --cwd packages/backend add @backstage-community/plugin-tech-radar-backend
 ```
