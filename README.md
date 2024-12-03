@@ -35,6 +35,8 @@ techRadar:
   url: https://github.com/ydarias/backstage-spike/blob/main/public/static/techRadarData.json
 ```
 
+**Note**: Sometimes it takes a few minutes to reload the changes, give it a time before determining it is not working.
+
 ## Interesting links and documentation
 
 * https://github.com/backstage/community-plugins/tree/main/workspaces/tech-radar/plugins/tech-radar
