@@ -4110,6 +4110,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@backstage/plugin-auth-backend-module-github-provider@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@backstage/plugin-auth-backend-module-github-provider@npm:0.2.2"
+  dependencies:
+    "@backstage/backend-plugin-api": "npm:^1.0.2"
+    "@backstage/plugin-auth-node": "npm:^0.5.4"
+    passport-github2: "npm:^0.1.12"
+  checksum: 10c0/01daf53fb846d55fade3c022f0899dcc6a160c033fc0001db726c3e80bb6a1233e7d6526edef566107f57d66a4b6dfdd68b2a3b7cacfbb078556346d31a79e65
+  languageName: node
+  linkType: hard
+
 "@backstage/plugin-auth-backend-module-gitlab-provider@npm:^0.2.1":
   version: 0.2.1
   resolution: "@backstage/plugin-auth-backend-module-gitlab-provider@npm:0.2.1"
@@ -14441,7 +14452,7 @@ __metadata:
     "@backstage/config": "npm:^1.2.0"
     "@backstage/plugin-app-backend": "npm:^0.3.76"
     "@backstage/plugin-auth-backend": "npm:^0.23.1"
-    "@backstage/plugin-auth-backend-module-github-provider": "npm:^0.2.1"
+    "@backstage/plugin-auth-backend-module-github-provider": "npm:^0.2.2"
     "@backstage/plugin-auth-backend-module-guest-provider": "npm:^0.2.1"
     "@backstage/plugin-auth-node": "npm:^0.5.3"
     "@backstage/plugin-catalog-backend": "npm:^1.27.0"
