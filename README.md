@@ -50,6 +50,27 @@ docker run -it -p 7007:7007 -e AUTH_GITHUB_CLIENT_ID='<client-id>' -e AUTH_GITHU
 ```
 
 The second problem was that the embedded front served by the backed was not working properly not being able to get the data behind some authentication problems. So the option selected was to run the frontend separately. During development test it is enough to execute `yarn start`, but we will have to discover how to create a Docker image for the frontend.
+
+### Creating frontend image
+
+To create the frontend image we can execute the following commands at the project root level:
+
+```shell
+yarn install --immutable
+
+yarn tsc
+
+yarn workspace app build --config ../../app-config.yaml --config ../../app-config.production.yaml
+
+docker build -t backstage-frontend -f Dockerfile.hostbuild .
+```
+
+We can ran the Docker image as:
+
+```shell
+docker run -it -p 3000:80 backstage-frontend
+```
+
 ## Technology Radar plugin
 
 Backstage offers a multitude of plugins, and one of them allows to have a Technology Radar a la ThoughtWorks.
