@@ -9,6 +9,47 @@ yarn install
 yarn dev
 ```
 
+## Deploying with Docker images
+
+The recommended way to do this is using the so called Host Build.
+
+This means that most part of the building process is done outside a Docker image, which is faster and handles better the caches. To do that we just can execute the following commands:
+
+```shell
+yarn install --immutable
+
+# tsc outputs type definitions to dist-types/ in the repo root, which are then consumed by the build
+yarn tsc
+
+# Build the backend, which bundles it all up into the packages/backend/dist folder.
+yarn build:backend
+```
+
+Now we can create the Docker image with `yarn build-image` but the documentation also mentions:
+
+```shell
+docker image build . -f packages/backend/Dockerfile --tag backstage
+```
+
+And finally we can run with:
+
+```shell
+docker run -it -p 7007:7007 backstage
+```
+
+### Important development notes
+
+Doing the previous steps, we already had some problems, so a few tips here.
+
+Because the `guest` authentication method is disabled at production by default, it fails if no other auth method is configured. The recommended option is to use Github Authentication system, but there are other options available. 
+
+Once we have the authentication running we can run with:
+
+```shell
+docker run -it -p 7007:7007 -e AUTH_GITHUB_CLIENT_ID='<client-id>' -e AUTH_GITHUB_CLIENT_SECRET='<client-secret>' backstage
+```
+
+The second problem was that the embedded front served by the backed was not working properly not being able to get the data behind some authentication problems. So the option selected was to run the frontend separately. During development test it is enough to execute `yarn start`, but we will have to discover how to create a Docker image for the frontend.
 ## Technology Radar plugin
 
 Backstage offers a multitude of plugins, and one of them allows to have a Technology Radar a la ThoughtWorks.
@@ -73,3 +114,4 @@ techRadar:
 
 * https://github.com/backstage/community-plugins/tree/main/workspaces/tech-radar/plugins/tech-radar
 * https://github.com/backstage/community-plugins/blob/main/workspaces/tech-radar/plugins/tech-radar-backend
+* https://backstage.io/docs/getting-started/config/authentication
