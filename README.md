@@ -73,7 +73,7 @@ docker run -it -p 3000:80 backstage-frontend
 
 ## Deploying into a Kubernetes cluster
 
-:alert: This operation was only tested at a local environment using Rancher Desktop.
+‼️ This operation was only tested at a local environment using Rancher Desktop.
 
 Once we have the images created and in a registry, we can try to deploy the elements in a Kubernetes cluster. If images were not created previously you can do with:
 
