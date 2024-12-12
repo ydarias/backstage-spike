@@ -5,7 +5,7 @@ metadata:
   name: backstage
   namespace: backstage
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backstage
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backstage
-          image: backstage:latest
+          image: backstage:0.0.2
           imagePullPolicy: IfNotPresent
           ports:
             - name: http
@@ -26,18 +26,16 @@ spec:
 #                name: postgres-secrets
             - secretRef:
                 name: backstage-secrets
-# Uncomment if health checks are enabled in your app:
-# https://backstage.io/docs/plugins/observability#health-checks
-#          readinessProbe:
-#            httpGet:
-#              port: 7007
-#              path: /healthcheck
-#          livenessProbe:
-#            httpGet:
-#              port: 7007
-#              path: /healthcheck
+          readinessProbe:
+            httpGet:
+              port: 7007
+              path: /.backstage/health/v1/readiness
+          livenessProbe:
+            httpGet:
+              port: 7007
+              path: /.backstage/health/v1/liveness
         - name: backstage-ui
-          image: backstage-ui:latest
+          image: backstage-ui:0.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

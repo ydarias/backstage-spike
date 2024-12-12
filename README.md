@@ -75,7 +75,14 @@ docker run -it -p 3000:80 backstage-frontend
 
 :alert: This operation was only tested at a local environment using Rancher Desktop.
 
-Once we have the images created and in a registry, we can try to deploy the elements in a Kubernetes cluster. As the descriptors are defined inside the `kubernetes` folder we can follow with the commands below:
+Once we have the images created and in a registry, we can try to deploy the elements in a Kubernetes cluster. If images were not created previously you can do with:
+
+```shell
+docker image build . -f packages/backend/Dockerfile --tag backstage:0.0.2
+docker image build . -f Dockerfile.hostbuild --tag backstage-ui:0.0.1
+```
+
+As the descriptors are defined inside the `kubernetes` folder we can follow with the commands below:
 
 ```shell
 kubectl apply -f kubernetes/namespace.yaml
