@@ -71,6 +71,28 @@ We can ran the Docker image as:
 docker run -it -p 3000:80 backstage-frontend
 ```
 
+## Deploying into a Kubernetes cluster
+
+:alert: This operation was only tested at a local environment using Rancher Desktop.
+
+Once we have the images created and in a registry, we can try to deploy the elements in a Kubernetes cluster. As the descriptors are defined inside the `kubernetes` folder we can follow with the commands below:
+
+```shell
+kubectl apply -f kubernetes/namespace.yaml
+
+export AUTH_GITHUB_CLIENT_ID=$(echo -n "<client-id>" | base64)
+export AUTH_GITHUB_CLIENT_SECRET=$(echo -n "<client-secret>" | base64)
+envsubst < kubernetes/backstage-secrets.yaml | kubectl apply -f -
+
+kubectl apply -f kubernetes/backstage.yaml
+
+kubectl apply -f kubernetes/backstage-service.yaml
+
+kubectl port-forward --namespace=backstage svc/backstage 3000:3000 7007:7007
+```
+
+Now we should be able to access our Backstage deployment at `http://localhost:3000`.
+ 
 ## Technology Radar plugin
 
 Backstage offers a multitude of plugins, and one of them allows to have a Technology Radar a la ThoughtWorks.
@@ -136,3 +158,4 @@ techRadar:
 * https://github.com/backstage/community-plugins/tree/main/workspaces/tech-radar/plugins/tech-radar
 * https://github.com/backstage/community-plugins/blob/main/workspaces/tech-radar/plugins/tech-radar-backend
 * https://backstage.io/docs/getting-started/config/authentication
+* https://backstage.io/docs/deployment/k8s
